@@ -1,12 +1,16 @@
 package com.example.philoniare.todoapp;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,10 +21,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TodoListActivity extends AppCompatActivity {
+    private static final String PROVIDER_NAME = "todoapp.contentprovider.todos";
+    private static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/todos");
+
     @BindView(R.id.todo_recycler_view) RecyclerView mRecyclerView;
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TodoDatabaseHelper todoHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,10 @@ public class TodoListActivity extends AppCompatActivity {
 
         mAdapter = new TodoAdapter(todoItems);
         mRecyclerView.setAdapter(mAdapter);
+
+        // Set out the contentProvider
+        CursorLoader cursorLoader = new CursorLoader(this, CONTENT_URI, null, null, null, null);
+        Cursor c = cursorLoader.loadInBackground();
     }
 
     @Override
