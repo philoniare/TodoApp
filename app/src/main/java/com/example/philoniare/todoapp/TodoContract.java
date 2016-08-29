@@ -12,5 +12,6 @@ public final class TodoContract {
     public static final class TodoEntry implements BaseColumns {
         public static final String TABLE_NAME = "todoItems";
         public static final String COLUMN_TITLE = "todoTitle";
+        public static final String COLUMN_COMPLETED = "todoCompleted";
     }
 }

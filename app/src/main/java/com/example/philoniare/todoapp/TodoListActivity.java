@@ -1,11 +1,14 @@
 package com.example.philoniare.todoapp;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.CursorLoader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -21,14 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TodoListActivity extends AppCompatActivity {
-    private static final String PROVIDER_NAME = "todoapp.contentprovider.todos";
-    private static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/todos");
-
-    @BindView(R.id.todo_recycler_view) RecyclerView mRecyclerView;
-
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private TodoDatabaseHelper todoHelper;
+    @BindView(R.id.todo_list_view) ListView mListView;
+    private TodoAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,26 +41,26 @@ public class TodoListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent addNewTodoIntent = new Intent(TodoListActivity.this, AddTodoActivity.class);
+                startActivity(addNewTodoIntent);
             }
         });
 
-        ArrayList<TodoItem> todoItems = new ArrayList<>();
-        todoItems.add(new TodoItem("Meditate"));
-        todoItems.add(new TodoItem("Write in the gratitude journal"));
+        mAdapter = new TodoAdapter(this, null, new RefreshInterface() {
+            @Override
+            public void onRefreshCallback() {
+                refreshValuesFromContentProvider();
+            }
+        });
+        mListView.setAdapter(mAdapter);
+        refreshValuesFromContentProvider();
+    }
 
-        // Initialize the todo list
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new TodoAdapter(todoItems);
-        mRecyclerView.setAdapter(mAdapter);
-
-        // Set out the contentProvider
-        CursorLoader cursorLoader = new CursorLoader(this, CONTENT_URI, null, null, null, null);
+    private void refreshValuesFromContentProvider() {
+        CursorLoader cursorLoader = new CursorLoader(this, TodoProvider.CONTENT_URI, null,
+                null, null, null);
         Cursor c = cursorLoader.loadInBackground();
+        mAdapter.swapCursor(c);
     }
 
     @Override
@@ -73,16 +72,16 @@ public class TodoListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshValuesFromContentProvider();
     }
 }

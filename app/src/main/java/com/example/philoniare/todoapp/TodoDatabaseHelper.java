@@ -15,13 +15,14 @@ import static com.example.philoniare.todoapp.TodoContract.TodoEntry.TABLE_NAME;
  */
 
 public class TodoDatabaseHelper extends SQLiteOpenHelper{
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "todos.db";
     public static final String TEXT_TYPE = " TEXT";
     public static final String COMMA_SEP = ",";
 
     private static final String SQL_CREATE_TODOS = "CREATE TABLE " + TABLE_NAME + " (" +
             TodoContract.TodoEntry._ID + " INTEGER PRIMARY KEY," +
+            TodoContract.TodoEntry.COLUMN_COMPLETED + " INTEGER" + COMMA_SEP +
             TodoContract.TodoEntry.COLUMN_TITLE + TEXT_TYPE + " )";
 
     private static final String SQL_DELETE_TODOS = "DROP TABLE IF EXISTS " + TABLE_NAME;

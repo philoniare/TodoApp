@@ -9,8 +9,8 @@
     tools:context="com.example.philoniare.todoapp.TodoListActivity"
     tools:showIn="@layout/activity_todo_list">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/todo_recycler_view"
+    <ListView
+        android:id="@+id/todo_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

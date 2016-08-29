@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "174947087013",
+    "project_id": "android-capstone"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174947087013:android:da39e55d2645e736",
+        "android_client_info": {
+          "package_name": "com.example.philoniare.todoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXmOwvNZztAc_eplOGOV1RtOl3dsXpco8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-83310517-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
