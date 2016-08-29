@@ -33,6 +33,7 @@ public class AddTodoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         setContentView(R.layout.activity_todo_add);
         ButterKnife.bind(this);
         Bundle bundle = getIntent().getExtras();
