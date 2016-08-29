@@ -1,14 +1,14 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.persistence;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.CancellationSignal;
 import android.support.annotation.Nullable;
+
+import com.example.philoniare.todoapp.persistence.TodoDatabaseHelper;
 
 /**
  * Created by philoniare on 8/28/2016.

@@ -1,4 +1,4 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.utility;
 
 /**
  * Created by philoniare on 8/28/2016.

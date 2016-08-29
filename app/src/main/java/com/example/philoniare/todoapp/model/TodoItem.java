@@ -1,7 +1,10 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.model;
 
 import android.database.Cursor;
 import android.util.Log;
+
+import com.example.philoniare.todoapp.utility.Utils;
+import com.example.philoniare.todoapp.persistence.TodoContract;
 
 public class TodoItem {
     private String title;

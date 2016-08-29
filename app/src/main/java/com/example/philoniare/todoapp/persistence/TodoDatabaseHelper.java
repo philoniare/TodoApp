@@ -1,4 +1,4 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 
-import static com.example.philoniare.todoapp.TodoContract.TodoEntry.TABLE_NAME;
+import com.example.philoniare.todoapp.persistence.TodoContract;
+
+import static com.example.philoniare.todoapp.persistence.TodoContract.TodoEntry.TABLE_NAME;
 
 /**
  * Created by philoniare on 8/28/2016.

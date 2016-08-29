@@ -1,26 +1,21 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.activity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.CursorLoader;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import com.example.philoniare.todoapp.R;
+import com.example.philoniare.todoapp.utility.RefreshInterface;
+import com.example.philoniare.todoapp.adapter.TodoAdapter;
+import com.example.philoniare.todoapp.persistence.TodoProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

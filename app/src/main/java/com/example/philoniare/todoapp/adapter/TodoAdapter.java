@@ -1,4 +1,4 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.adapter;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -15,6 +15,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.philoniare.todoapp.R;
+import com.example.philoniare.todoapp.utility.RefreshInterface;
+import com.example.philoniare.todoapp.utility.Utils;
+import com.example.philoniare.todoapp.activity.AddTodoActivity;
+import com.example.philoniare.todoapp.model.TodoItem;
+import com.example.philoniare.todoapp.persistence.TodoContract;
+import com.example.philoniare.todoapp.persistence.TodoProvider;
 
 public class TodoAdapter extends CursorAdapter {
     private RefreshInterface mRefreshInterface;

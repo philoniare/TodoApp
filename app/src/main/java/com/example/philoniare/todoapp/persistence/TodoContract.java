@@ -1,4 +1,4 @@
-package com.example.philoniare.todoapp;
+package com.example.philoniare.todoapp.persistence;
 
 import android.provider.BaseColumns;
 
