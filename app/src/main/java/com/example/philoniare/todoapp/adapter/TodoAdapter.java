@@ -55,26 +55,21 @@ public class TodoAdapter extends CursorAdapter {
         });
 
         CheckBox completionCheckbox = (CheckBox) view.findViewById(R.id.checkbox_completion);
-        Log.d(Utils.LOG_TAG, "" + currentTodo.getStatus());
-        if(currentTodo.getStatus() == 1) {
-            completionCheckbox.setChecked(true);
-        } else {
-            completionCheckbox.setChecked(false);
-        }
+        completionCheckbox.setChecked(TodoItem.getStatus(currentTodo.getCompleted()));
         completionCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                currentTodo.setStatus(b);
                 ContentValues updateValues = new ContentValues();
-                updateValues.put(TodoContract.TodoEntry.COLUMN_COMPLETED, currentTodo.getStatus());
+                updateValues.put(TodoContract.TodoEntry.COLUMN_COMPLETED,
+                        TodoItem.covertStatus(b));
                 Uri singleUri = ContentUris.withAppendedId(TodoProvider.CONTENT_URI, currentTodo.getId());
+                Log.d("SingleURI", singleUri.toString());
                 context.getContentResolver().update(
                         singleUri,
                         updateValues,
                         null,
                         null
                 );
-                mRefreshInterface.onRefreshCallback();
             }
         });
     }

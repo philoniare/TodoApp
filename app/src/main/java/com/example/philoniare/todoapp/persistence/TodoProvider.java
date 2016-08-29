@@ -1,6 +1,7 @@
 package com.example.philoniare.todoapp.persistence;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -16,15 +17,20 @@ import com.example.philoniare.todoapp.persistence.TodoDatabaseHelper;
 
 public class TodoProvider extends ContentProvider {
 
-    public static final String PROVIDER_NAME = "todoapp.contentprovider.todos";
-    public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/todo");
+    private static final String PROVIDER_NAME = "todoapp.contentprovider.todos";
+    private static final String TODOS_BASE_URI = "todos";
+    public static final Uri CONTENT_URI = Uri.parse("content://" +
+            PROVIDER_NAME + "/" + TODOS_BASE_URI);
     private static final int TODOS = 1;
     private static final int TODO_ID = 2;
+    public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/todos";
+    public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/todos";
+
     private static final UriMatcher uriMatcher = getUriMatcher();
     private static UriMatcher getUriMatcher() {
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(PROVIDER_NAME, "todos", TODOS);
-        uriMatcher.addURI(PROVIDER_NAME, "todos/#", TODO_ID);
+        uriMatcher.addURI(PROVIDER_NAME, TODOS_BASE_URI, TODOS);
+        uriMatcher.addURI(PROVIDER_NAME, TODOS_BASE_URI + "/#", TODO_ID);
         return uriMatcher;
     }
 

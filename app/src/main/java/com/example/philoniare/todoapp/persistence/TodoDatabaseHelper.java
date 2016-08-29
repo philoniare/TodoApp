@@ -17,7 +17,7 @@ import static com.example.philoniare.todoapp.persistence.TodoContract.TodoEntry.
  */
 
 public class TodoDatabaseHelper extends SQLiteOpenHelper{
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 6;
     public static final String DATABASE_NAME = "todos.db";
     public static final String TEXT_TYPE = " TEXT";
     public static final String COMMA_SEP = ",";

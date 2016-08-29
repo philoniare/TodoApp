@@ -9,7 +9,7 @@ import com.example.philoniare.todoapp.persistence.TodoContract;
 public class TodoItem {
     private String title;
     private long id;
-    private int completed;
+    private int completed = 0;
 
     public TodoItem(long id, String title, int completed) {
         this.id = id;
@@ -25,16 +25,16 @@ public class TodoItem {
         return id;
     }
 
-    public int getStatus() {
+    public int getCompleted() {
         return completed;
     }
 
-    public void setStatus(boolean b) {
-        if(b) {
-            completed = 1;
-        } else {
-            completed = 0;
-        }
+    public static boolean getStatus(int completionStatus) {
+        return completionStatus == 1;
+    }
+
+    public static int covertStatus(boolean b) {
+        return b ? 1 : 0;
     }
 
     public static TodoItem fromCursor(Cursor cursor) {
