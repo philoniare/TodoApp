@@ -7,15 +7,19 @@ import com.example.philoniare.todoapp.utils.Utils;
 import com.example.philoniare.todoapp.persistence.TodoContract;
 
 public class TodoItem {
-    public enum PRIORITY { LOW, MEDIUM, HIGH }
-    public enum STATUS { NOT_STARTED, IN_PROGRESS, COMPLETE }
+    public static final String ID_KEY = "TODO_ID";
+    public static final String TITLE_KEY = "TODO_TITLE";
+    public static final String PRIORITY_KEY = "TODO_PRIORITY";
+    public static final String NOTES_KEY = "TODO_NOTES";
+    public static final String STATUS_KEY = "TODO_STATUS";
+
     private String title;
     private String notes;
     private long id;
-    private int priority;
-    private int status;
+    private String priority;
+    private String status;
 
-    public TodoItem(long id, String title, int priority, int status, String notes) {
+    public TodoItem(long id, String title, String priority, String status, String notes) {
         this.id = id;
         this.title = title;
         this.priority = priority;
@@ -31,12 +35,20 @@ public class TodoItem {
         this.notes = notes;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getTitle() {
@@ -57,8 +69,8 @@ public class TodoItem {
             long id = cursor.getLong(idIndex);
             String title = cursor.getString(titleIndex);
             String notes = cursor.getString(notesIndex);
-            int priority = cursor.getInt(priorityIndex);
-            int status = cursor.getInt(statusIndex);
+            String priority = cursor.getString(priorityIndex);
+            String status = cursor.getString(statusIndex);
             return new TodoItem(id, title, priority, status, notes);
         } catch(Exception e) {
             e.printStackTrace();
