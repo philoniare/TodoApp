@@ -13,7 +13,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            //Thread.sleep(1800);     // used to display the splash screen and mimic app load behavior
+            Thread.sleep(1800);     // used to display the splash screen and mimic app load behavior
         } catch (Exception e) {
             e.printStackTrace();
         }

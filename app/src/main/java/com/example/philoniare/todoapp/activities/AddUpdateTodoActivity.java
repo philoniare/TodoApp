@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,7 +43,6 @@ public class AddUpdateTodoActivity extends AppCompatActivity implements AdapterV
     private Long todoId;
     private List<String> PRIORITIES = Arrays.asList("High", "Normal", "Low");
     private List<String> STATUS = Arrays.asList("Not started", "In progress", "Complete");
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -118,4 +119,22 @@ public class AddUpdateTodoActivity extends AppCompatActivity implements AdapterV
         // Stub method
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_todo_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_delete) {
+            Uri singleUri = ContentUris.withAppendedId(TodoProvider.CONTENT_URI, todoId);
+            this.getContentResolver().delete(singleUri, null, null);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
