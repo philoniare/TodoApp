@@ -3,6 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="update_button">Update</string>
     <string name="add_button">Add</string>
-    <string name="title_description">Title:</string>
+    <string name="title_description">Title</string>
+    <string name="priority_description">Priority</string>
+    <string name="notes_description">Notes</string>
+    <string name="status_description">Status</string>
     <string name="title_hint">Workout</string>
 </resources>

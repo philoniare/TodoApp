@@ -1,4 +1,4 @@
-package com.example.philoniare.todoapp.activity;
+package com.example.philoniare.todoapp.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,8 +13,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.example.philoniare.todoapp.R;
-import com.example.philoniare.todoapp.utility.RefreshInterface;
-import com.example.philoniare.todoapp.adapter.TodoAdapter;
+import com.example.philoniare.todoapp.interfaces.RefreshInterface;
+import com.example.philoniare.todoapp.adapters.TodoAdapter;
 import com.example.philoniare.todoapp.persistence.TodoProvider;
 
 import butterknife.BindView;
@@ -36,7 +36,7 @@ public class TodoListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addNewTodoIntent = new Intent(TodoListActivity.this, AddTodoActivity.class);
+                Intent addNewTodoIntent = new Intent(TodoListActivity.this, AddUpdateTodoActivity.class);
                 startActivity(addNewTodoIntent);
             }
         });

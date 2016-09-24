@@ -35,7 +35,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
-    // Google Services
-    compile 'com.google.android.gms:play-services-analytics:9.0.0'
-
+    // Visual
+    compile 'com.github.traex.rippleeffect:library:1.3'
 }

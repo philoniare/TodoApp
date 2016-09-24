@@ -14,16 +14,19 @@
             android:name="com.example.philoniare.todoapp.persistence.TodoProvider">
         </provider>
         <activity
-            android:name=".activity.TodoListActivity"
+            android:name=".activities.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AddTodoActivity" />
+        <activity android:name=".activities.TodoListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".activities.AddUpdateTodoActivity" />
     </application>
 
 </manifest>
